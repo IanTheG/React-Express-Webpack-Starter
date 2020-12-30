@@ -20,7 +20,7 @@ module.exports = {
       "pragma": "React",                  // Pragma to use, default to "React"
       "fragment": "Fragment",             // Fragment to use (may be a property of <pragma>), default to "Fragment"
       "version": "detect",                // React version. "detect" automatically picks the version you have installed.
-      "flowVersion": "0.53"               // Flow version
+      // "flowVersion": "0.53"               // Flow version
     },
     "propWrapperFunctions": [
         // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
