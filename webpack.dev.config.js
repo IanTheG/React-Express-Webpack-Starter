@@ -7,21 +7,26 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: {
-    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/index.jsx']
-  },
+  // entry: {
+  //   main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/index.jsx']
+  // },
+  entry: [
+    'webpack-hot-middleware/client?reload=true',
+    'react-hot-loader/patch',
+    './src/index.jsx'
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
     publicPath: '/',
   },
   target: 'web',
-  devtool: 'eval',
-  devServer: {
-    contentBase: './dist',
-    // Enables hot reloading with webpack-dev-server
-    // hot: true,
-  },
+  devtool: 'inline-source-map',
+  // devServer: {
+  //   contentBase: './dist',
+  //   // Enables hot reloading with webpack-dev-server
+  //   // hot: true,
+  // },
   module: {
     rules: [
       {
@@ -33,12 +38,13 @@ module.exports = {
         // Loads the javascript into html template provided.
         // Entry point is set below in HtmlWebPackPlugin in Plugins 
         test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-            //options: { minimize: true }
-          }
-        ]
+        use: 'html-loader',
+        // use: [
+        //   {
+        //     loader: "html-loader",
+        //     //options: { minimize: true }
+        //   }
+        // ]
       },
       { 
         test: /\.css$/,

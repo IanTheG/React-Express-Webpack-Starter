@@ -26,9 +26,8 @@ app.use(webpackDevMiddleware(compiler, {
 // Enable hot reloading for dev server
 app.use(webpackHotMiddleware(compiler))
 
-const notes = {
-  title: 'this is a note'
-}
+// console.log(DIST_DIR)
+// console.log(HTML_FILE)
 
 // Route for entry point index.html
 app.get('/', (req, res, next) => {

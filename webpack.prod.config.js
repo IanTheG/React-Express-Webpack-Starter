@@ -14,7 +14,7 @@ module.exports = {
     filename: '[name].js'
   },
   target: 'web',
-  devtool: 'eval',
+  devtool: 'inline-source-map',
   // Webpack 4 does not have a CSS minifier, although
   // Webpack 5 will likely come with one
   optimization: {
