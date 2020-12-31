@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage",
-    "server": "node ./src/server/server-dev.js",
+    "server": "node server-dev.js",
     "build": "webpack --mode development --config webpack.dev.config.js && webpack --mode development --config webpack.server.config.js ",
     "buildDev": "rm -rf dist && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
     "buildProd": "rm -rf dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",

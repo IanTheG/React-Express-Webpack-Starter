@@ -13,7 +13,7 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client?reload=true',
     'react-hot-loader/patch',
-    './src/index.jsx'
+    './src/public/index.jsx'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -73,7 +73,7 @@ module.exports = {
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
 
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
+      template: "./src/public/index.html",
       filename: "./index.html",
       excludeChunks: [ 'server' ]
     }),
