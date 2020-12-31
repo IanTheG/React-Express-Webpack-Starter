@@ -14,7 +14,7 @@ module.exports = {
     filename: '[name].js'
   },
   target: 'web',
-  devtool: 'eval',
+  devtool: 'inline-source-map',
   // Webpack 4 does not have a CSS minifier, although
   // Webpack 5 will likely come with one
   optimization: {
@@ -38,8 +38,8 @@ module.exports = {
         }
       },
       {
-        // Loads the javacript into html template provided.
-        // Entry point is set below in HtmlWebPackPlugin in Plugins 
+        // Loads the javascript into html template provided.
+        // Entry point is set below in HtmlWebPackPlugin in Plugins
         test: /\.html$/,
         use: [
           {
@@ -59,11 +59,22 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
+      },
     ]
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: './src/html/index.html',
+      template: './src/index.html',
       filename: './index.html'
     }),
     new MiniCssExtractPlugin({
