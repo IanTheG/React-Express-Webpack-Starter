@@ -11,6 +11,8 @@ const app = express(),
             HTML_FILE = path.join(DIST_DIR, 'index.html'),
             compiler = webpack(config)
 
+const routes = require('./src/routes');
+
 // const express = require('express');
 // const path = require('path');
 // // const routes = require('./routes');
@@ -42,17 +44,20 @@ app.use(webpackDevMiddleware(compiler, {
 // Enable hot reloading for dev server
 app.use(webpackHotMiddleware(compiler))
 
+// Use routes defined by express in src
+app.use(routes)
+
 // Route for entry point index.html
-app.get('/', (req, res, next) => {
-  compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
-  if (err) {
-    return next(err)
-  }
-  res.set('content-type', 'text/html')
-  res.send(result)
-  res.end()
-  })
-})
+// app.get('/', (req, res, next) => {
+//   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
+//   if (err) {
+//     return next(err)
+//   }
+//   res.set('content-type', 'text/html')
+//   res.send(result)
+//   res.end()
+//   })
+// })
 
 // Route for api
 app.get('/api', (req, res) => {
