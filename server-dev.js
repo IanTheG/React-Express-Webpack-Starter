@@ -47,6 +47,14 @@ app.use(webpackHotMiddleware(compiler))
 // Use routes defined by express in src
 app.use(routes)
 
+app.get('/api', (req, res) => {
+  axios
+  .get('https://pokeapi.co/api/v2/pokemon/ditto')
+  .then(response => res.json(response.data))
+  .catch((err) => res.json(err))
+  // res.json(notes)
+})
+
 // Route for entry point index.html
 // app.get('/', (req, res, next) => {
 //   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
@@ -58,14 +66,6 @@ app.use(routes)
 //   res.end()
 //   })
 // })
-
-// Route for api
-app.get('/api', (req, res) => {
-  axios
-  .get('https://pokeapi.co/api/v2/pokemon/ditto')
-  .then(response => res.json(response.data))
-  // res.json(notes)
-})
 
 const PORT = process.env.PORT || 8080
 
