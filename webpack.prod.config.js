@@ -73,6 +73,8 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'

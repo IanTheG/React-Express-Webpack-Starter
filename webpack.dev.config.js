@@ -4,16 +4,23 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const WebpackShellPlugin = require('webpack-shell-plugin')
+
+console.log(path.resolve(__dirname, 'src'))
+
+const { NODE_ENV = 'production' } = process.env;
 
 module.exports = {
   mode: 'development',
+  context: path.resolve(__dirname, 'src'),
   // entry: {
   //   main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/index.jsx']
   // },
   entry: [
     'webpack-hot-middleware/client?reload=true',
     'react-hot-loader/patch',
-    './src/public/index.jsx'
+    './public/index.jsx'
+    // './src/public/index.jsx'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -76,11 +83,15 @@ module.exports = {
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
 
     new HtmlWebPackPlugin({
-      template: "./src/public/index.html",
+      template: "./public/index.html",
       filename: "./index.html",
       excludeChunks: [ 'server' ]
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+
+    // new WebpackShellPlugin({
+    //   onBuildEnd: ['npm run run:dev']
+    // })
   ]
 }

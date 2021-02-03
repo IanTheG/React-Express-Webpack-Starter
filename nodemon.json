@@ -1,0 +1,6 @@
+{
+  "watch": [
+    "server-dev.js",
+    "src"
+  ]
+}
