@@ -20,6 +20,9 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/',
   },
+  resolve: {
+    alias: { 'react-dom': '@hot-loader/react-dom' }
+  },
   target: 'web',
   devtool: 'inline-source-map',
   // devServer: {

@@ -23,12 +23,12 @@ const compiler = webpack(config)
 router.route('/').get((req, res, next) => {
   // Run webpack compilation when hitting root route '/'
   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
-  if (err) {
-    return next(err)
-  }
-  res.set('content-type', 'text/html')
-  res.send(result)
-  res.end()
+    if (err) {
+      return next(err)
+    }
+    res.set('content-type', 'text/html')
+    res.send(result)
+    res.end()
   })
 })
 
